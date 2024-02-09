@@ -15,7 +15,6 @@ const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?:
   
     useEffect(() => {
         setLoading(true);
-        // after fetch we need to stop it -> controller
       const controller = new AbortController();
       apiClient
         .get<FetchResponse<T>>(endpoint, { signal: controller.signal, ...requestConfig })
