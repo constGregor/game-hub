@@ -15,13 +15,16 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
   if (error) return null;
   return (
     <List>
-      <GenreListItemContainer>
-        {isLoading &&
-          skeletons.map((skeleton) => <GenreListItemSkeleton key={skeleton} />)}
-      </GenreListItemContainer>
+      {isLoading &&
+        skeletons.map((skeleton) => (
+          <GenreListItemContainer key={skeleton}>
+            <GenreListItemSkeleton />
+          </GenreListItemContainer>
+        ))}
+
       {data.map((genre) => (
-        <GenreListItemContainer>
-          <HStack key={genre.id}>
+        <GenreListItemContainer key={genre.id}>
+          <HStack>
             <Image
               boxSize="32px"
               borderRadius={8}
