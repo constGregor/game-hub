@@ -12,13 +12,13 @@ interface Props {
 const GameGrid = ({ gameQuery }: Props) => {
   const { data, error, isLoading } = useGames(gameQuery);
   const skeletons = [1, 2, 3, 4, 5, 6];
+  if (error) return <Text>No games found.</Text>;
   return (
     <SimpleGrid
       columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
       padding="10px"
       spacing={3}
     >
-      {error && <Text>"No games found"</Text>}
       {isLoading &&
         skeletons.map((skeleton) => (
           <GameCardContainer key={skeleton}>
