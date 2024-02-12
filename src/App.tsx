@@ -38,7 +38,6 @@ function App() {
               setGameQuery({ ...gameQuery, searchText })
             }
           />
-          <Emoji />
         </GridItem>
         <Show above="lg">
           <GridItem area="aside" paddingX={5}>

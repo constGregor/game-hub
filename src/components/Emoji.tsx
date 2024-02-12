@@ -14,6 +14,7 @@ const Emoji = ({ rating }: Props) => {
     5: { src: top, alt: "top" },
   };
 
+  if (rating === 0) return;
   return <Image {...emojiMap[rating]} boxSize="25px" marginTop={2} />;
 };
 
