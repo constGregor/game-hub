@@ -17,6 +17,7 @@ export interface GameQuery {
 }
 
 function App() {
+  console.log("dasjhdjkasdk");
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
   console.log(gameQuery);
   return (
