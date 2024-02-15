@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 import genres from "../data/genres";
-import APIClient, { FetchResponse } from "../Services/api-client";
+import APIClient from "../Services/api-client";
 
 export interface Genre {
     id: number;
@@ -16,8 +16,7 @@ const useGenres = () => {
         queryFn: apiClient.getAll,
         staleTime: 24 * 60 * 60 * 1000, //1 day
         initialData: { 
-            count: genres.length, 
-            next: null, 
+            count: genres.length,
             results: genres 
         }
     })

@@ -18,7 +18,6 @@ const usePlatforms = () => {
         staleTime: 24 * 60 * 60 * 1000, //1 day
         initialData: { 
             count: platforms.length, 
-            next: null, 
             results: platforms 
         }
     })
