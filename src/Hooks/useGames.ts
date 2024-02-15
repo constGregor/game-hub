@@ -1,7 +1,7 @@
-import { useQuery } from "react-query";
+import { useInfiniteQuery } from "react-query";
 import { GameQuery } from "../App";
 import { Platform } from "./usePlatforms";
-import APIClient from "../Services/api-client";
+import APIClient, { FetchResponse } from "../Services/api-client";
 
 export interface Game {
     id: number;
@@ -10,21 +10,25 @@ export interface Game {
     parent_platforms: { platform: Platform }[];
     metacritic: number;
     rating_top: number;
-  }
+}
 
 const apiClient = new APIClient<Game>("/games")
 
 const useGames = (gameQuery: GameQuery) => {
-  return useQuery<Game[], Error>({
+  return useInfiniteQuery<FetchResponse<Game>, Error>({
     queryKey: ["games", gameQuery],
-    queryFn: () => apiClient.getAll({ 
+    queryFn: ({ pageParam = 1 }) => apiClient.getAll({ 
       params: {
         genres: gameQuery.genre?.id, 
         platforms: gameQuery.platform?.id,
         ordering: gameQuery.sortOrder,
-        search: gameQuery.searchText
+        search: gameQuery.searchText,
+        page: pageParam
       }
      }),
+     getNextPageParam: (lastPage, allPages) => {
+      return lastPage.next ? allPages.length + 1 : undefined;
+     }
   })
 }
 
