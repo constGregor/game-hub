@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
 import { GameQuery } from "../App";
 import { Platform } from "./usePlatforms";
-import apiClient, { FetchResponse } from "../Services/api-client";
+import APIClient from "../Services/api-client";
 
 export interface Game {
     id: number;
@@ -12,20 +12,19 @@ export interface Game {
     rating_top: number;
   }
 
+const apiClient = new APIClient<Game>("/games")
 
 const useGames = (gameQuery: GameQuery) => {
   return useQuery<Game[], Error>({
     queryKey: ["games", gameQuery],
-    queryFn: () => apiClient
-    .get<FetchResponse<Game>>("/games", { 
+    queryFn: () => apiClient.getAll({ 
       params: {
         genres: gameQuery.genre?.id, 
         platforms: gameQuery.platform?.id,
         ordering: gameQuery.sortOrder,
         search: gameQuery.searchText
       }
-     })
-     .then(res => res.data.results),
+     }),
   })
 }
 

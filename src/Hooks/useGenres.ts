@@ -1,7 +1,6 @@
 import { useQuery } from "react-query";
-import apiClient from "../Services/api-client";
-import { FetchResponse } from "../Services/api-client";
 import genres from "../data/genres";
+import APIClient from "../Services/api-client";
 
 export interface Genre {
     id: number;
@@ -9,10 +8,12 @@ export interface Genre {
     image_background: string;
 }
 
+const apiClient = new APIClient<Genre>("/genres")
+
 const useGenres = () => {
     return useQuery<Genre[], Error>({
         queryKey: ["genres"],
-        queryFn: () => apiClient.get<FetchResponse<Genre>>("/genres").then(res => res.data.results),
+        queryFn: apiClient.getAll,
         staleTime: 24 * 60 * 60 * 1000, //1 day
         initialData: genres
     })
