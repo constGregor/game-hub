@@ -1,20 +1,10 @@
-import APIClient from "../Services/api-client";
 import {useQuery} from "react-query";
-import useGameQueryStore from "../store";
-
-interface GameDetail {
-    id: number;
-    slug: string;
-    name: string;
-    description_raw: string;
-}
-
-const apiClient = new APIClient<GameDetail>('/games')
+import {Game, gameClient} from "../Services/gameService";
 
 const useGame = (slug: string) => {
-    return useQuery<GameDetail, Error>({
+    return useQuery<Game, Error>({
         queryKey: ["games", slug],
-        queryFn: () => apiClient.getOne(slug)
+        queryFn: () => gameClient.getOne(slug)
     })
 }
 
