@@ -6,10 +6,12 @@ export interface Game {
     slug: string;
     name: string;
     background_image: string;
-    parent_platforms: { platform: Platform }[];
-    metacritic: number;
     rating_top: number;
     description_raw: string;
+    parent_platforms: { platform: Platform }[];
+    metacritic: number;
+    genres: string;
+    publishers: string;
 }
 
 export const gameClient = new APIClient<Game>("/games")
