@@ -18,7 +18,8 @@ const useGenres = () => {
         staleTime: ms("24h"),
         initialData: { 
             count: genres.length,
-            results: genres 
+            results: genres,
+            next: null
         }
     })
 }

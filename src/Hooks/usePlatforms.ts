@@ -1,5 +1,5 @@
 import platforms from "../data/platforms";
-import APIClient, { FetchResponse } from "../Services/api-client";
+import APIClient from "../Services/api-client";
 import { useQuery } from "react-query";
 import ms from "ms"
 
@@ -19,7 +19,8 @@ const usePlatforms = () => {
         staleTime: ms("24h"),
         initialData: { 
             count: platforms.length, 
-            results: platforms 
+            results: platforms,
+            next: null
         }
     })
 };
