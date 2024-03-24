@@ -1,14 +1,9 @@
 import platforms from "../data/platforms";
 import APIClient from "../Services/api-client";
-import { useQuery } from "react-query";
+import {useQuery} from "react-query";
 import ms from "ms"
+import {Platform} from "../entities/Platform";
 
-
-export interface Platform {
-    id: number;
-    name: string;
-    slug: string;
-}
 
 const apiClient = new APIClient<Platform>("/platforms/lists/parents")
 

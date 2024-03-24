@@ -1,5 +1,4 @@
-import {Platform} from "../Hooks/usePlatforms";
-import APIClient from "./api-client";
+import {Platform} from "./Platform";
 
 export interface Game {
     id: number;
@@ -13,5 +12,3 @@ export interface Game {
     genres: string;
     publishers: string;
 }
-
-export const gameClient = new APIClient<Game>("/games")

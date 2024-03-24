@@ -1,8 +1,10 @@
 import { useInfiniteQuery } from "react-query";
-import { FetchResponse } from "../Services/api-client";
+import APIClient, { FetchResponse } from "../Services/api-client";
 import ms from "ms"
 import useGameQueryStore from "../store";
-import {Game, gameClient} from "../Services/gameService";
+import {Game} from "../entities/Game";
+
+const gameClient = new APIClient<Game>("/games")
 
 const useGames = () => {
   const gameQuery =  useGameQueryStore(store => store.gameQuery);

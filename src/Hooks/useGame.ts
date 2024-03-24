@@ -1,5 +1,8 @@
 import {useQuery} from "react-query";
-import {Game, gameClient} from "../Services/gameService";
+import {Game} from "../entities/Game";
+import APIClient from "../Services/api-client";
+
+const gameClient = new APIClient<Game>("/games")
 
 const useGame = (slug: string) => {
     return useQuery<Game, Error>({

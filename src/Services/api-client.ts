@@ -15,6 +15,7 @@ const axiosInstance = axios.create({
 
 class APIClient<T> {
     endpoint: string;
+    param?: string
 
     constructor(endpoint: string) {
         this.endpoint = endpoint;
