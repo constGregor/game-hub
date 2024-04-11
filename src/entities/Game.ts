@@ -1,6 +1,8 @@
 import {Platform} from "./Platform";
+import {Publisher} from "./Publisher";
+import {Genre} from "./Genre";
 
-export interface Game {
+export default interface Game {
     id: number;
     slug: string;
     name: string;
@@ -9,6 +11,6 @@ export interface Game {
     description_raw: string;
     parent_platforms: { platform: Platform }[];
     metacritic: number;
-    genres: string;
-    publishers: string;
+    genres: Genre[];
+    publishers: Publisher[];
 }

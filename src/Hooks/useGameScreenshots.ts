@@ -1,6 +1,6 @@
 import {useQuery} from "react-query";
 import APIClient from "../Services/api-client";
-import {GameScreenshots} from "../entities/GameScreenshots";
+import GameScreenshots from "../entities/GameScreenshots";
 
 const useGameScreenshots = (id: string) => {
     const apiClient = new APIClient<GameScreenshots>(`/games/${id}/screenshots`)

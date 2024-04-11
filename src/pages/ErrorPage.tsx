@@ -1,4 +1,3 @@
-import React from 'react';
 import {Heading, Highlight, VStack} from "@chakra-ui/react";
 import {isRouteErrorResponse, useRouteError} from "react-router-dom";
 import NavBar from "../components/NavBar";

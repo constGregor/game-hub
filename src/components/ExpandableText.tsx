@@ -11,10 +11,10 @@ function ExpandableText({ children }: Props) {
 
     if (!children) return;
 
-    if (children.length <= limit)
-        return (
-            <Text>{children}</Text>
-        )
+    if (children.length <= limit) {
+        return <Text>{children}</Text>
+    }
+
     const summary = children.substring(0, limit);
     return (
         <VStack align="start">

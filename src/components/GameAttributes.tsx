@@ -1,8 +1,7 @@
-import React from 'react';
 import DefinitionItem from "./DefinitionItem";
 import {SimpleGrid, Text} from "@chakra-ui/react";
 import CriticScore from "./CriticScore";
-import {Game} from "../entities/Game";
+import Game from "../entities/Game";
 
 interface Props {
     game: Game;
@@ -24,7 +23,7 @@ function GameAttributes({ game }: Props) {
                     <Text key={g.id}>{g.name}</Text>
                 )}
             </DefinitionItem>
-            <DefinitionItem term="Publishers">
+            <DefinitionItem term="Publisher">
                 {game.publishers?.map((p) =>
                     <Text key={p.id}>{p.name}</Text>
                 )}
