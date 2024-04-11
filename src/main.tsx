@@ -5,7 +5,7 @@ import { RouterProvider } from "react-router-dom";
 import theme from "./theme.ts";
 import "./index.css";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+// import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import router from "./router";
 
 const queryClient = new QueryClient({
@@ -29,6 +29,6 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         <RouterProvider router={router} />
       </ChakraProvider>
     </QueryClientProvider>
-    <ReactQueryDevtools initialIsOpen={true} />
+    {/*<ReactQueryDevtools initialIsOpen={true} />*/}
   </React.StrictMode>
 );
